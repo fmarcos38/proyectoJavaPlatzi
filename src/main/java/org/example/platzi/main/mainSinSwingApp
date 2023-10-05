@@ -1,0 +1,53 @@
+package org.example.platzi.main;
+
+import org.example.platzi.model.Employee;
+import org.example.platzi.repository.EmployeeRepository;
+import org.example.platzi.repository.Repository;
+import org.example.platzi.util.DatabaseConnection;
+
+import java.sql.*;
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
+
+        //realizo la conexión
+        try(
+                Connection myConn = DatabaseConnection.getInstance(); //acá llamo al metodo de la CLASE q conecta con la DB
+        ){
+            //instancio obj/clase repository
+            Repository<Employee> repository = new EmployeeRepository();
+
+            System.out.println("--------Muestra todos los empl----------------");
+            //Busco todos los empleados y recorro el array obtenido
+            repository.findAll().forEach(System.out::println);
+
+            System.out.println("--------busca por ID----------------");
+            //Busco por id
+            System.out.println(repository.getById(2));
+
+            System.out.println("--------inserto empleado----------------\n");
+            //Employee e = new Employee(); //creo obj de tipo Employee
+            //e.setFirst_name("juli");
+            //e.setLast_name("beba");
+            //e.setEmail("fd@df.com");
+            //e.setSalary((float) 2500);
+            //repository.save(e);//paso el empleado creado
+
+            System.out.println("--------actualizo empleado----------------\n");
+            Employee e = new Employee(); //creo obj de tipo Employee
+            e.setId(5);
+            e.setFirst_name("juli");
+            e.setLast_name("salazar");
+            e.setEmail("fd@df.com");
+            e.setSalary((float) 2500);
+            repository.save(e);
+
+            System.out.println("--------elimino empleado----------------\n");
+            //repository.delete(5);
+
+            System.out.println("--------Vuelvo a mostrar todos los empl----------------\n");
+            //Busco todos los empleados y recorro el array obtenido
+            repository.findAll().forEach(System.out::println);
+        }
+    }
+}

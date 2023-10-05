@@ -1,0 +1,7 @@
+En el paquete repository, creamos la clase EmployeeRepository que implementa la interfaz Repository.
+En esta clase, implementamos todos los métodos definidos en la interfaz y comenzamos a codificar cada uno de ellos.
+
+Comenzamos con los métodos findAll() y getById(), que corresponden a las operaciones de lectura en el CRUD.
+Aprendimos a extraer un método utilizando la opción “Refactor” > “Extract Method” en nuestro IDE.
+Esta técnica nos permitió reutilizar código y evitar repetir la lógica de asignación de valores a través de los métodos set de la clase Employee.
+En su lugar, creamos el método createEmployee, que nos ayuda a encapsular esa lógica y mejorar la legibilidad y mantenibilidad del código.
